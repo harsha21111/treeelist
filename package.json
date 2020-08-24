@@ -1,0 +1,25 @@
+{
+  "name": "658cm",
+  "description": "This example demonstrates editing in «row» mode. Each row is supplied with an «Edit» link, a click on which switches the row into the editing state. Editors vary from one cell to another: they may be calendars, select boxes, simple text boxes, etc. Note that you can also add or delete a row using the «Add a row» button or the «Delete» link, respectively.\n",
+  "dependencies": {
+    "react-dom": "16",
+    "react": "16",
+    "quill": "1.3.7",
+    "prop-types": "latest",
+    "jszip": "3.1.3",
+    "devextreme-react": "20.1",
+    "devextreme": "20.1",
+    "devexpress-gantt": "1.0.7",
+    "devexpress-diagram": "1.0.9"
+  },
+  "version": "0.0.0",
+  "devDependencies": {
+    "react-scripts": "1.0.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
