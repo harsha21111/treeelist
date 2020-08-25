@@ -11,13 +11,13 @@ class App extends React.Component {
     rowSeq: ''
   };
   this.onFocusedRowChanged = this.onFocusedRowChanged.bind(this);
-  this.onTaskIdChanged = this.onTaskIdChanged.bind(this);
+  //this.onTaskIdChanged = this.onTaskIdChanged.bind(this);
 }
-onTaskIdChanged(e) {
-  if(e.event && e.value > 0) {
-    this.setState({ focusedRowKey: e.value });
-  }
-}
+// onTaskIdChanged(e) {
+//   if(e.event && e.value > 0) {
+//     this.setState({ focusedRowKey: e.value });
+//   }
+// }
 onFocusedRowChanged(e) {
   var rowData = e.row && e.row.data;
 
