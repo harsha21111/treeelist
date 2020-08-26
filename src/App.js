@@ -10,12 +10,12 @@ class App extends React.Component {
     this.state = {
       lineItemDescription: "",
       rowSeq: "",
+      selectedRowKeys: [],
     };
     this.onFocusedRowChanged = this.onFocusedRowChanged.bind(this);
+    this.onSelectionChanged = this.onSelectionChanged.bind(this);
   }
-  checkBoxAttributes = {
-    id: "rowSeq",
-  };
+
   customizeColumns = (columns) => {
     defaultHiddenColumnNames.forEach((colNameToHide) => {
       columns.forEach((col) => {
@@ -37,7 +37,14 @@ class App extends React.Component {
     }
   }
 
+  onSelectionChanged(e) {
+    this.setState({
+      selectedRowKeys: e.selectedRowKeys,
+    });
+  }
+
   render() {
+    const { selectedRowKeys } = this.state;
     return (
       <div id="tree-list-parsed-data">
         <TreeList
@@ -51,7 +58,10 @@ class App extends React.Component {
           focusedRowEnabled={true}
           onFocusedRowChanged={this.onFocusedRowChanged}
           customizeColumns={this.customizeColumns}
+          selectedRowKeys={selectedRowKeys}
+          onSelectionChanged={this.onSelectionChanged}
         >
+          <Selection recursive={false} mode="multiple" />
           <ColumnChooser enabled={true} mode="select" />
           <Selection mode="multiple" />
         </TreeList>
@@ -60,6 +70,9 @@ class App extends React.Component {
           <div className="info">
             <div id="lineItemDescription">{this.state.lineItemDescription}</div>
             <div id="rowSeq">{this.state.rowSeq}</div>
+          </div>
+          <div classname="checkbox-info">
+            <div id="rowSeq">{this.state.selectedRowKeys}</div>
           </div>
         </div>
       </div>
