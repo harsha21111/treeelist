@@ -27,7 +27,10 @@ class App extends React.Component {
   callAPI() {
     fetch("http://localhost:9000/testAPI")
       .then((res) => res.text())
-      .then((res) => this.setState({ apiResponse: res }));
+      .then((res) => {
+        console.log(res);
+        this.setState({ parsedDataNew: res[0] });
+      });
   }
 
   componentWillMount() {
@@ -113,9 +116,7 @@ class App extends React.Component {
             <div id="rowSeq">{this.state.selectedRowKeys}</div>
           </div>
         </div>
-        <div>
-          <p className="App-intro">{this.state.apiResponse}</p>
-        </div>
+        <div>{/* <p className="App-intro">{this.state.apiResponse}</p> */}</div>
       </div>
     );
   }
