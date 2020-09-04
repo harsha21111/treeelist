@@ -16,6 +16,7 @@ class App extends React.Component {
       selectedRowKeys: [],
       selectedDropDownValue: this.dropDownValues[0],
       parsedDataNew: parsedData,
+      apiResponse: "",
     };
 
     this.onFocusedRowChanged = this.onFocusedRowChanged.bind(this);
@@ -23,13 +24,21 @@ class App extends React.Component {
 
     this.dropDownChanged = this.dropDownChanged.bind(this);
   }
+  callAPI() {
+    fetch("http://localhost:9000/testAPI")
+      .then((res) => res.text())
+      .then((res) => this.setState({ apiResponse: res }));
+  }
 
+  componentWillMount() {
+    this.callAPI();
+  }
   async dropDownChanged(e) {
-    if (e.value == "data3") {
+    if (e.value === "data3") {
       this.setState({
         parsedDataNew: await (await import("./data3")).parsedData,
       });
-    } else if (e.value == "data4") {
+    } else if (e.value === "data4") {
       this.setState({
         parsedDataNew: await (await import("./data4")).parsedData,
       });
@@ -103,6 +112,9 @@ class App extends React.Component {
           <div className="checkbox-info">
             <div id="rowSeq">{this.state.selectedRowKeys}</div>
           </div>
+        </div>
+        <div>
+          <p className="App-intro">{this.state.apiResponse}</p>
         </div>
       </div>
     );
