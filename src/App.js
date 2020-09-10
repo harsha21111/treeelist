@@ -24,15 +24,19 @@ class App extends React.Component {
 
     this.dropDownChanged = this.dropDownChanged.bind(this);
   }
+  // callAPI() {
+  //   fetch("http://localhost:9000/all")
+  //     .then((res) => res.text())
+  //     .then((res) => {
+  //       console.log(res);
+  //       this.setState({ parsedDataNew: res[0] });
+  //     });
+  // }
   callAPI() {
-    fetch("http://localhost:9000/testAPI")
+    fetch("http://localhost:9000/all")
       .then((res) => res.text())
-      .then((res) => {
-        console.log(res);
-        this.setState({ parsedDataNew: res[0] });
-      });
+      .then((res) => this.setState({ apiResponse: res }));
   }
-
   componentWillMount() {
     this.callAPI();
   }
@@ -116,7 +120,9 @@ class App extends React.Component {
             <div id="rowSeq">{this.state.selectedRowKeys}</div>
           </div>
         </div>
-        <div>{/* <p className="App-intro">{this.state.apiResponse}</p> */}</div>
+        <div>
+          <table>{this.state.apiResponse}</table>
+        </div>
       </div>
     );
   }
